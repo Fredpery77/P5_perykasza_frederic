@@ -16,7 +16,6 @@ header {
 }
 .logodusite {
     width: 30%;
-    
 }
 .nav-lienpanier {
     text-decoration: none;
@@ -34,7 +33,7 @@ ul {
 }
 .liste-nounours {
     display: flex;
-    flex-wrap: initial;
+    flex-wrap: nowrap;
     justify-content: space-around;
 }
 .cartes-nounours {
@@ -46,11 +45,11 @@ ul {
     margin: 1em;
     padding: 1em;
 }
-.imageNounours {
-    border-radius: 1.25em 1.25em 0 0;
-    object-fit: cover;
-    width: 320px;
-    height: 260px;
+.image-nounours {
+    width: 300px;
+    height: 240px;
+    padding: 10px;
+    border-radius: 1.25rem;
 }
 .descriptif {
     width: 100%;
@@ -71,5 +70,39 @@ a:link {
     background-color: white;
     padding: 10px;
 }
-
-
+@media (min-width: 320px) and (max-width: 374px)
+{
+    .liste-nounours {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .image-nounours {
+        width: 240px;
+        height: 240px;    
+}
+}
+@media (min-width: 375px) and (max-width: 424px)
+{
+    .liste-nounours {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .image-nounours {
+        width: 240px;
+        height: 240px;    
+}
+}
+@media (min-width: 425px) and (max-width: 767px)
+{
+    .liste-nounours {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .image-nounours {
+        width: 240px;
+        height: 240px;    
+}
+}
