@@ -70,6 +70,11 @@ a:link {
     background-color: white;
     padding: 10px;
 }
+button {
+    color: black;
+    border: 2px solid black;
+    margin-left: 150px;
+}
 @media (min-width: 320px) and (max-width: 374px)
 {
     .liste-nounours {
