@@ -31,12 +31,13 @@ ul {
 .fa-shopping-cart {
     padding-left: 15px;
 }
+
 .liste-nounours {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
 }
-.cartes-nounours {
+.carteNounours {
     background-color: rgb(226, 133, 222);
     border-radius: 1.25rem;
     box-shadow: 0 0 16px #0000002e;
@@ -47,7 +48,7 @@ ul {
 }
 .image-nounours {
     width: 300px;
-    height: 240px;
+    height: 200px;
     padding: 10px;
     border-radius: 1.25rem;
 }
@@ -59,7 +60,27 @@ ul {
 }
 #productName {
     color: black;
-
+    font-weight: bold;
+}
+#productName1 {
+    color: black;
+    font-weight: bold;
+}
+#productName2 {
+    color: black;
+    font-weight: bold;
+}
+#productName3 {
+    color: black;
+    font-weight: bold;
+}
+#productName4 {
+    color: black;
+    font-weight: bold;
+}
+#productName5 {
+    color: black;
+    font-weight: bold;
 }
 a:link {
     text-decoration: none;
@@ -73,21 +94,14 @@ a:link {
 button {
     color: black;
     border: 2px solid black;
-    margin-left: 150px;
+    margin-left: 200px;
+    padding: 10px;
 }
-#quote {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2rem;
-    background: black;
-    font-size: 2rem;
-    border-radius: 10px;
-    transition: .5s;
-    color: white;
-    cursor: pointer;
+button:hover {
+    background-color: #dee;
+    transform: scale(1.08);
 }
+
 @media (min-width: 320px) and (max-width: 374px)
 {
     .liste-nounours {
