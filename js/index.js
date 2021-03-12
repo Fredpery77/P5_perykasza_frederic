@@ -36,35 +36,32 @@ const getIP = () => {
     nomDuProduit.innerHTML = res[0].name;
     imageDuProduit.innerHTML = '<img class="image-nounours" src="' + res[0].imageUrl + '"/>';
     descriptifDuProduit.innerHTML = res[0].description;
-    prixDuProduit.innerHTML = res[0].price;  
+    prixDuProduit.innerHTML = res[0].price  + "€";  
 
     nomDuProduit2.innerHTML = res[1].name;
     imageDuProduit2.innerHTML = '<img class="image-nounours" src="' + res[1].imageUrl + '"/>';
     descriptifDuProduit2.innerHTML = res[1].description;
-    prixDuProduit2.innerHTML = res[1].price;
+    prixDuProduit2.innerHTML = res[1].price + "€";
 
     nomDuProduit3.innerHTML = res[2].name;
     imageDuProduit3.innerHTML = '<img class="image-nounours" src="' + res[2].imageUrl + '"/>';
     descriptifDuProduit3.innerHTML = res[2].description;
-    prixDuProduit3.innerHTML = res[2].price;
+    prixDuProduit3.innerHTML = res[2].price +  "€";
 
     nomDuProduit4.innerHTML = res[3].name;
     imageDuProduit4.innerHTML = '<img class="image-nounours" src="' + res[3].imageUrl + '"/>';
     descriptifDuProduit4.innerHTML = res[3].description;
-    prixDuProduit4.innerHTML = res[3].price;
+    prixDuProduit4.innerHTML = res[3].price + "€";
   
     nomDuProduit5.innerHTML = res[4].name;
     imageDuProduit5.innerHTML = '<img class="image-nounours" src="' + res[4].imageUrl + '"/>';
     descriptifDuProduit5.innerHTML = res[4].description;
-    prixDuProduit5.innerHTML = res[4].price;
+    prixDuProduit5.innerHTML = res[4].price + "€";
     })
 }
 getIP()
 
-   
-   // Add event listeners on button
-
-   document.getElementByName('btn').onclick = (event) => {
-    event.preventDefault()
-    
-  } 
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+  console.log('yes !');
+})
