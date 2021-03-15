@@ -16,12 +16,59 @@
    
 </header>
 <!--fin du header--> 
-    <!-- Produits -->
+    
+    <!--Formulaire de Commande-->
+<section class="container-bloc">
+    <h2>Vos coordonnées</h2>
+    <div class="formulaire">
+        <form action="#" id="form">
+            <div class="ligne1">
+            <p>
+                <label for="nom">Nom :</label>
+                <input type="text" name="nom" id="nom" required />
+            </p>
 
-<form action="#" id="form">
-<input type="text" id="cp">
-<input type="submit" value="Envoyer">
-</form>
+            <p>
+                <label for="prenom">Prénom :</label>
+                <input type="text" name="prenom" id="prenom" required />
+            </p>
+
+            <p>
+                <label for="adresse">Adresse :</label>
+                <input type="text" name="adresse" id="adresse" required />
+            </p>
+            </div>
+            <div class="ligne2">
+            <p>
+                <label for="codepostal">Code postal :</label>
+                <input type="text" name="codepostal" id="codepostal" required />
+            </p>
+
+            <p>
+                <label for="ville">Ville :</label>
+                <input type="text" name="ville" id="ville" required />
+            </p>
+
+            <p>
+                <label for="adressemail">Adresse mail :</label>
+                <input type="email" name="adressemail" id="adressemail" required />
+            </p>
+            </div>
+            <input type="submit" value="Valider vos coordonnées" id="boutonformulaire">
+        </form>
+    </div>
+</section>
+
+<!-- Produits dans le panier -->
+<section class="commandeencours">
+    <div class="coordonnées">
+<h2>Votre panier</h2>
+
+
+
+<input type="submit" value="Procéder au paiement" id="validationpaiement">
+</div>
+</section>
 
 
     <script src="./js/panier.js"></script>
