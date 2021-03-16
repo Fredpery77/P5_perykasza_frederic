@@ -25,10 +25,9 @@ const getIP = () => {
         prixDuProduit.innerHTML = res.price/100  + ",00 €"; 
         colorsArray.forEach(element => {
             colorsList.innerHTML += element;
-            colorsList.innerHTML += '<div class="h-12 sm:h-20 cursor-pointer flex-grow bg-white rounded transition duration-150 transform hover:scale-105" style="background-color:"' + element + ';"></div>';
+            colorsList.innerHTML += '<div' + element + ';"></div>';
         });
 
-     
     })
 }
 getIP()
