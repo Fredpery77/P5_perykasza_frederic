@@ -157,6 +157,7 @@ p {
     background-color: #F3E9F1;
     width: 50%;
     margin: 0 auto;
+    padding: 40px;
 }
 .image-du-produit {
     width: 70%;
@@ -170,7 +171,17 @@ p {
     background-color: tan;
     transition-duration: 150ms;
 }
-
+#btnAjoutezAuPanier 
+ {
+    border: 2px solid black;
+    padding: 15px;    
+    margin: 20px;
+    color: black;
+}
+#btnAjoutezAuPanier:hover {
+    background-color: #dee;
+    transform: scale(1.08);
+}
 
 @media (min-width: 320px) and (max-width: 374px)
 {

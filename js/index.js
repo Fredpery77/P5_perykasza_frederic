@@ -63,6 +63,19 @@ const getIP = () => {
 }
 getIP()
 
+// ajouter une donnée dans le local storage
 
+localStorage.setItem("nom", "PERY-KASZA");
+localStorage.setItem("prenom", "frederic");
+localStorage.setItem("lieu", "France");
 
+// récupérer une donnée dans le local storage
 
+let maDonnee = localStorage.getItem("prénom");
+console.log(maDonnee);
+
+// supprimer une donnée dans le local storage
+localStorage.removeItem("prénom");
+
+// supprimer toutes les données dans le local storage
+ localStorage.clear();
