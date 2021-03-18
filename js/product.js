@@ -10,19 +10,18 @@ const prixDuProduit = document.querySelector("#productPrice");
 const colorsList = document.querySelector("#productColor");
 
 
+ const getIP = () => {
 
-const getIP = () => {
-
-    fetch('http://localhost:3000/api/teddies/' + id)
+    fetch('http://localhost:3000/api/teddies/')
       .then(res => res.json())
       .then(res => {
 
         const colorsArray = res.colors;
 
-        nomDuProduit.innerHTML = res.name;
-        imageDuProduit.innerHTML = '<img class="image-du-produit" src="' + res.imageUrl + '"/>';
-        descriptifDuProduit.innerHTML = res.description;
-        prixDuProduit.innerHTML = res.price/100  + ",00 €"; 
+        nomDuProduit.innerHTML = element.name;
+        imageDuProduit.innerHTML = '<img src="' + element.imageUrl + '"/>';
+        descriptifDuProduit.innerHTML = element.description;
+        prixDuProduit.innerHTML = element.price/100  + ",00 €"; 
         colorsArray.forEach(element => {
             colorsList.innerHTML += element;
             colorsList.innerHTML += '<div' + element + ';"></div>';
@@ -31,3 +30,4 @@ const getIP = () => {
     })
 }
 getIP()
+
