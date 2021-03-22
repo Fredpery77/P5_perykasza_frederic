@@ -1,34 +1,5 @@
 //-------------------- Affichage de la page produit -------------------------
 
-/*const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get('id')
-const imageDuProduit = document.querySelector('.image-du-produit');
-const nomDuProduit = document.querySelector(".image-du-produit");
-const descriptifDuProduit = document.querySelector(".image-du-produit");
-const prixDuProduit = document.querySelector(".image-du-produit");
-const colorsList = document.querySelector(".image-du-produit");
-
-
- const getIP = () => {
-
-    fetch('http://localhost:3000/api/teddies/')
-      .then(res => res.json())
-      .then(res => {
-
-
-        nomDuProduit.innerHTML = res.name;
-        imageDuProduit.innerHTML = '<img src="' + res.imageUrl + '"/>';
-        descriptifDuProduit.innerHTML = res.description;
-        prixDuProduit.innerHTML = res.price/100  + ",00 €"; 
-        colorsList.innerHTML += res.colors;
-            
-        });
-}
-getIP() */
-
-// récupère tous les éléments------------------------
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id')
@@ -39,14 +10,15 @@ dataApi.then(async (responseData) => {
 
   const response = await responseData.json();
   const section = document.querySelector('.image-du-produit');
-  console.log(response);
+  
   let name = response.name;
   let description = response.description;
   let imageUrl = response.imageUrl;
   let price = response.price;
   let colors = response.colors;
-  console.log(colors);
   var html = '';
+
+  //------------------------injecter la structure HTML pour affichage du produit------------
 
     html += '<section id="#affichageduProduit"><ul>'
     + '<li><span id="productImage"><img class="image-nounours" src="' + imageUrl + '"/> </span></li>'
@@ -60,11 +32,60 @@ dataApi.then(async (responseData) => {
       html += `<option value="` + color + `">` + color + `</option>`;
     });
 
-    html += `</select></form><a class="ajoutezAuPanier" href="./panier.html"><button id="btnAjoutezAuPanier">Ajoutez au panier</button></a>`
+
+
+
+    html += `</select></form><a class="ajoutezAuPanier"><button id="btnAjoutezAuPanier">Ajoutez au panier</button></a>`
     + '</ul></section>';       
     
     section.innerHTML = html;
+
+
+const envoyerPanier = document.querySelector("#btnAjoutezAuPanier");
+
+
+
+envoyerPanier.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  let produitDansLePanier = {
+    nomProduit: productName.name,
+    price: productPrice.price/100 +",00 €",
+  }
+  let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
+
+if (produitEnregistreDansLocalStorage) {
+
+}
+else {
+  produitEnregistreDansLocalStorage = [];
+  produitEnregistreDansLocalStorage.push(produitDansLePanier);
+  localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage));
+console.log(produitEnregistreDansLocalStorage);
+}
+
+})
 });
 
 
 
+
+
+
+//-----------------Gestion d'un panier---------------
+/* function initBasket(){
+  let basket = localStorage.getItem("basket");
+  if(basket != null){
+    return JSON.parse(basket);
+  }else {
+    return [];
+  }
+}
+  function addToBasket(product){
+    let basket = initBasket();
+    basket.push(product)
+    saveBasket(basket);
+  }
+  function saveBasket(basket){
+    JSON.stringify(localStorage.setItem("basket",basket));
+  } */

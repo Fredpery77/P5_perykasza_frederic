@@ -13,12 +13,15 @@ const structureProduit =`
 <section class="commandeencours">
     <h2>Votre panier</h2>
     <div id="affichageduProduit">
-
-        <ul>
-            <li>Produit : <span></span></li>
-            <li>Quantité : <span></span></li>
-            <li>Prix : <span></span></li>
-        </ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produit : <span></span></th>
+            <th>Quantité : <span></span></th>
+            <th>Prix : <span></span></th>
+        </tr>
+        </thead>
+        </table>
             <form>
             <select id="productQuantity" name="quantity" id="quantity">
                 <option value="1">1</option>
