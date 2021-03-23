@@ -1,24 +1,35 @@
 
-document.querySelector('#form').addEventListener('submit', function (e){
-    var cp = document.querySelector('#codepostal')
-    if (cp.value.length != 5) {
-     alert('Le code postal n\'est pas bon')
-     e.preventDefault()
-    }
-})
- const positionElement = document.querySelector(".commandeencours");
-//------------------------------La gestion du panier----------------------------
-//--------------------- la récupération des données sélectionnées par l'utilisateur et envoie du panier----------
-const structureProduit =`
-<section class="commandeencours">
-    <h2>Votre panier</h2>
+//Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et le values qui sont dans le local storage
+let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
+
+//-----------------------Affichage des produits du panier------------------------------------
+// sélection de la classe pour injecter le HTML----------------------------------
+const affichagePanier = document.querySelector("#commandeencours");
+
+
+
+//----------------Si le panier est vide : afficher le panier est vide
+if(produitEnregistreDansLocalStorage === null){
+const panierVide =`
+<div class="container-panier-vide">
+<div> Le panier est vide</div>
+</div>`;
+affichagePanier.innerHTML = panierVide;
+
+}else{
+    // si le panier n'est pas vide : afficher le produit
+let structureProduitPanier = [];
+for (i = 0; i < produitEnregistreDansLocalStorage.length; i++ ){
+    
+    structureProduitPanier = structureProduitPanier + `
+    <section id="commandeencours">
     <div id="affichageduProduit">
 <table class="table">
     <thead>
         <tr>
-            <th>Produit : <span></span></th>
-            <th>Quantité : <span></span></th>
-            <th>Prix : <span></span></th>
+            <th>Nom : ${produitEnregistreDansLocalStorage[i].name} </th>
+            <th>Produit : <img class="image-nounours" src="${produitEnregistreDansLocalStorage[i].imageUrl}"/></th>
+            <th>Prix : ${produitEnregistreDansLocalStorage[i].price} </th>
         </tr>
         </thead>
         </table>
@@ -38,15 +49,38 @@ const structureProduit =`
                 <option value="12">12</option>
             </select>
             </form>
-            <button id="btn-validation-commande">Valider votre commande</button>
             </div>
     </section>
     `
-    ;
+    ;}
 
-    positionElement.innerHTML = structureProduit;
+    if(i === produitEnregistreDansLocalStorage.length){
+        //injection html dans la page panier
+        affichagePanier.innerHTML =  structureProduitPanier;
+    }
+}
+
+
+//-----------------------------Fin de l'affichage des produits dans le panier----------------
+
+//-------------------------------------Le montant total dans le panier------------------
+//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier---------
+let prixTotalCalcul = [];
+
+//----------------------Aller chercher les prix dans le panier-----------
+for (let j = 0; j < produitEnregistreDansLocalStorage.length; j++){
+    let prixProduitsDansLePanier = produitEnregistreDansLocalStorage[j].price;
+
+    //Mettre les prix du panier dans la variable "prixTotalCalcul"
+    prixTotalCalcul.push(prixProduitsDansLePanier)
+
+}
+
+//Additionner les prix qu'il y a dans le tableau de la variable "prixTotalCalcul" avec la méthode reduce
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+const prixTotal = prixTotalCalcul.reduce(reducer);
 
 
 
 
-
+ 

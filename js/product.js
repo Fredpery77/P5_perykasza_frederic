@@ -49,19 +49,52 @@ envoyerPanier.addEventListener("click", (event) => {
   event.preventDefault();
 
   let produitDansLePanier = {
-    nomProduit: productName.name,
-    price: productPrice.price/100 +",00 €",
+    imageUrl: response.imageUrl,
+    name: response.name,
+    price: response.price,
   }
+
+  //--------------------------------Le Local Storage---------------------------------------
+  //--------------------------Stocker les valeurs du bouton dans le local storage------------
+
+
+  //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et le values qui sont dans le local storage
   let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
-if (produitEnregistreDansLocalStorage) {
+//---------JSON.parse c'est pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 
+//----------------Foncion fenêtre pop up--------------
+const popupConfirmation = () => {
+  if(window.confirm(`${response.name} a bien été ajouté au panier
+  Consultez le panier OK ou continuez vos achats ANNULER`)){
+    window.location.href = "panier.html";
+}else{
+  window.location.href = "index.html";
+}
+}
+
+//Fonction ajouter un produit sélectionné dans le localStorage
+const ajoutProduitLocalStorage = () => {
+
+  //ajout dans le tableau de l'objet avec les values choisies par l'utilisateur----------
+  produitEnregistreDansLocalStorage.push(produitDansLePanier);
+
+  //la transformation en format JSON et l'envoyer dans la key "produit" du localStorage
+  localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage));
+};
+
+// SI il a déjà des produits d'enregistrés dans le local storage
+if (produitEnregistreDansLocalStorage) {
+  ajoutProduitLocalStorage();
+    popupConfirmation();
+
+// SI il n'y a pas de produits enregistrés dans le local storage
 }
 else {
   produitEnregistreDansLocalStorage = [];
-  produitEnregistreDansLocalStorage.push(produitDansLePanier);
-  localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage));
-console.log(produitEnregistreDansLocalStorage);
+  ajoutProduitLocalStorage();
+    popupConfirmation();
+
 }
 
 })
