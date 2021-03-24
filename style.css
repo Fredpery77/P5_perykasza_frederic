@@ -39,10 +39,13 @@ ul {
     padding-left: 15px;
 }
 
-.liste-nounours {
+.toutes-les-cartes {
     display: flex;
+    flex-direction:row;
     flex-wrap: nowrap;
+    width: 100%;
     justify-content: space-around;
+
 }
 .carteNounours {
     background-color: #F3E9F1;
@@ -50,13 +53,14 @@ ul {
     box-shadow: 0 0 16px #0000002e;
     transition-duration: 0.1s;
     cursor: pointer;
-    margin: 1em;
+    margin: 10px;
     padding: 1em;
 }
 .image-nounours {
-    width: 300px;
+    width: 250px;
     height: 200px;
-    padding: 10px;
+    margin: 0 auto;
+    padding: 0 auto;
     border-radius: 1.25rem;
 }
 .descriptif {
@@ -68,6 +72,14 @@ ul {
 #productName {
     color: black;
     font-weight: bold;
+    margin: 5px;
+    padding: 10px;
+}
+#productDescription {
+    color: black;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 a:link {
     text-decoration: none;
@@ -96,11 +108,6 @@ button:hover {
     display: flex;
     flex-direction: row;
     margin-right: 15px;
-}
-#commandeencours {
-    background-color: #F3E9F1;
-    width: 50%;
-    margin: 0 auto;
 }
 #validationpaiement {
     border: 2px solid black;
@@ -132,6 +139,7 @@ button:hover {
     margin: 0 auto;
     padding: 40px;
 }
+
 
           /* ------------affichage page produit------------- */
 p {
@@ -166,6 +174,62 @@ p {
 #btnAjoutezAuPanier:hover {
     background-color: #dee;
     transform: scale(1.08);
+}
+#affichageduPanier {
+    background-color: #F3E9F1;
+    margin: 0 auto;
+    width: 50vw;
+    padding: 20px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 80px;
+}
+.affichage-prix-total-html {
+    border: 2px solid black;
+    background-color: #F3E9F1;
+    margin: 5px auto;
+    width: 50vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: end;
+}
+/*--------------------------- Formulaire commande -------------------------------*/
+
+#formulaireCommande {
+    background-color: #F3E9F1;
+    margin: 0 auto;
+    border: 2px solid black;
+    width: 52vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+h2 {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input {
+    width: 40vw;
+    margin: 10px;
+}
+textarea {
+width: 40vw;
+margin: 10px;
+}
+#envoyerFormulaire {
+    margin: 10px auto;
+
 }
 
 @media (min-width: 320px) and (max-width: 374px)

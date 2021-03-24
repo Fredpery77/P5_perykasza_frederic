@@ -1,89 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panier - Orinoco</title>
-<script src="https://kit.fontawesome.com/305fd59af1.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - Orinoco</title>
+    <script src="https://kit.fontawesome.com/305fd59af1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
-<body> 
-    
-   <!--début du header-->
-<header>
-    <a href="./index.html"><img class="logodusite" src="./img/155217189_223764392828019_4999796935568417374_n.png.webp" alt="Orinico"></a>
-   
-</header>
-<!--fin du header--> 
-    
-    <!--Formulaire de Commande-->
-<section class="container-bloc">
-    <h2>Vos coordonnées</h2>
-    <div class="formulaire">
-        <form action="#" id="form">
-            <div class="ligne1">
-            <p>
-                <label for="nom">Nom :</label>
-                <input type="text" name="nom" id="nom" required />
-            </p>
 
-            <p>
-                <label for="prenom">Prénom :</label>
-                <input type="text" name="prenom" id="prenom" required />
-            </p>
+<body>
 
-            <p>
-                <label for="adresse">Adresse :</label>
-                <input type="text" name="adresse" id="adresse" required />
-            </p>
-            </div>
-            <div class="ligne2">
-            <p>
-                <label for="codepostal">Code postal :</label>
-                <input type="text" name="codepostal" id="codepostal" required />
-            </p>
+    <!--début du header-->
+    <header>
+        <a href="./index.html"><img class="logodusite"
+                src="./img/155217189_223764392828019_4999796935568417374_n.png.webp" alt="Orinico"></a>
 
-            <p>
-                <label for="ville">Ville :</label>
-                <input type="text" name="ville" id="ville" required />
-            </p>
+    </header>
+    <!--fin du header-->
 
-            <p>
-                <label for="adressemail">Adresse mail :</label>
-                <input type="email" name="adressemail" id="adressemail" required />
-            </p>
-            </div>
-            <input type="submit" value="Procéder au paiement" id="boutonformulaire">
-        </form>
-    </div>
-</section>
+    <!-- Produits dans le panier -->
 
-<!-- Produits dans le panier -->
+    <section id="commandeencours">
+        <h2>Votre panier</h2>
+        <div id="affichageduPanier">
 
-<section id="commandeencours">
-    <h2>Votre panier</h2>
-    <div id="affichageduProduit">
-        
-        
-    </div>
-    <div class="container-panier-vide">
+        </div>
+        <div class="container-panier-vide">
 
-
-
-    </div>
+        </div>
     </section>
-    
-
-
-<!--<section class="commandeencours"> 
-    <div class="coordonnées">
-<h2>Votre panier</h2> 
-
-</div>
-</section> -->
-
-
     <script src="./js/panier.js"></script>
 </body>
 </html>
