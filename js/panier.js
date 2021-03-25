@@ -12,7 +12,7 @@ const affichagePanier = document.querySelector("#commandeencours");
 if (produitEnregistreDansLocalStorage === null) {
     const panierVide = `
 <div class="container-panier-vide">
-<div> Le panier est vide</div>
+<div> Le panier est vide </div>
 </div>`;
     affichagePanier.innerHTML = panierVide;
 
@@ -27,9 +27,9 @@ if (produitEnregistreDansLocalStorage === null) {
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nom : ${produitEnregistreDansLocalStorage[i].name} </th>
-                    <th>Produit : <img class="image-nounours" src="${produitEnregistreDansLocalStorage[i].imageUrl}"/></th>
-                    <th>Prix : ${produitEnregistreDansLocalStorage[i].price/100},00 € </th>
+                    <th><span id="nomDansLePanier">Nom : ${produitEnregistreDansLocalStorage[i].name}</span> </th>
+                    <th><span id="imageDansLePanier"><img class="image-nounours" src="${produitEnregistreDansLocalStorage[i].imageUrl}"/></span></th>
+                    <th><span id="prixDansLePanier">Prix : ${produitEnregistreDansLocalStorage[i].price/100},00 € </span></th>
                 </tr>
             </thead>
         </table>
@@ -75,59 +75,3 @@ affichagePanier.insertAdjacentHTML("beforeend", affichagePrixHtml);
 
 //-----------------------------------------------FIN - Le montant total du panier-------------------------------
 
-//*********************************************************Le formulaire de commande**************************/
-
-const afficherFormulaireHtml = () => {
-    //Sélection élément du DOM pour le positionnement du formulaire
-    const positionFormulaire = document.querySelector("#commandeencours");
-
-    const structureFormulaire = `
-
-    <div id="formulaireCommande">
-        <h2>Remplissez le formulaire pour valider la commande</h2>
-    
-    
-        <form>
-            <label for="prenom"> Prénom :</label>
-            <input type="text" id="prenom" name="prenom" required>
-    
-            <label for="nom"> Nom : </label>
-            <input type="text" id="nom" name="nom" required>
-    
-            <label for="adresse"> Adresse : </label>
-            <textarea id="adresse" name="adresse" required>
-                    </textarea>
-    
-            <label for="ville"> Ville : </label>
-            <input type="text" id="ville" name="ville" required>
-    
-            <label for="codePostal"> Code Postal : </label>
-            <input type="text" id="codePostal" name="codePostal" required>
-    
-            <label for="email"> E-mail : </label>
-            <input type="text" id="email" name="email" required>
-    
-            <button id="envoyerFormulaire" type="submit" name="envoyerFormulaire">
-                Confirmation de la commande
-            </button>
-        </form>
-    </div>`;
-
-    //injection HTML
-    positionFormulaire.insertAdjacentHTML("afterend", structureFormulaire);
-};
-
-//Affichage du formulaire
-afficherFormulaireHtml();
-
-//Sélection du bouton envoyer le formulaire
-const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
-
-//--------------------------addEnventListener-------------------
-btnEnvoyerFormulaire.addEventListener("click", () => {
-
-    //Récupération des valeurs du formulaire pour les mettre dans le localStorage
-    localStorage.setItem("prenom", document.querySelector("prenom").value);
-
-    console.log(document.querySelector("#prenom").value);
-})

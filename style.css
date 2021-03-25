@@ -5,6 +5,11 @@ body {
     font-family: "Roboto", Arial, sans-serif;
     background-color:#383737;
 }
+.fa-arrow-left {
+    color: black;
+    padding-right: 20px;
+    width: 10%;
+}
 h2 {
     padding: 10px;
 }
@@ -20,6 +25,7 @@ header {
 }
 .logodusite {
     width: 30%;
+    
 }
 .nav-lienpanier {
     text-decoration: none;
@@ -64,23 +70,34 @@ ul {
     border-radius: 1.25rem;
 }
 .descriptif {
-    width: 100%;
+    width: 50%;
     margin-top: 10px;
     padding-top: 10px;
     color: black;
 }
 #productName {
     color: black;
-    font-weight: bold;
-    margin: 5px;
-    padding: 10px;
-}
+    font-weight: 600;
+    }
 #productDescription {
     color: black;
+    font-weight: 600;
     margin: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+#productPrice {
+    color: black;
+    font-weight: 600;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* #productQuantity {
+    font-size: 120%;
+    margin-right: 1430px;
+    margin-bottom: 15px;
+} */
 a:link {
     text-decoration: none;
 }
@@ -142,40 +159,30 @@ button:hover {
 
 
           /* ------------affichage page produit------------- */
-p {
-    padding-top: 5px;
-    margin-right: 15px;
+li {
+    padding: 5px;
+    margin-right: 10px;
 }
 #affichageduProduit {
     background-color: #F3E9F1;
-    width: 50%;
+    width: 30%;
     margin: 0 auto;
-    padding: 40px;
-}
-.image-du-produit-dans-le-panier {
-    width: 70%;
-    text-align: center;
-    padding-left: 80px;
-}
-.choisir-la-couleur {
-    height: 3rem;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: tan;
-    transition-duration: 150ms;
+    padding: 20px;
 }
 #btnAjoutezAuPanier 
  {
     border: 2px solid black;
     padding: 15px;    
-    margin: 20px;
+    margin: 0 auto;
     color: black;
+    text-align: center;
 }
 #btnAjoutezAuPanier:hover {
     background-color: #dee;
     transform: scale(1.08);
 }
 #affichageduPanier {
+    
     background-color: #F3E9F1;
     margin: 0 auto;
     width: 50vw;
@@ -203,15 +210,15 @@ p {
 
 #formulaireCommande {
     background-color: #F3E9F1;
-    margin: 0 auto;
+    margin:0 auto ;
     border: 2px solid black;
-    width: 52vw;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    width: 52vw;   
 }
-h2 {
+ h2 {
     text-align: center;
 }
 form {
@@ -224,33 +231,119 @@ input {
     margin: 10px;
 }
 textarea {
-width: 40vw;
-margin: 10px;
+    width: 40vw;
+    margin: 10px;
 }
 #envoyerFormulaire {
     margin: 10px auto;
-
+} 
+#prixDansLePanier {
+    margin-left: 250px;
+}
+#imageDansLePanier {
+    margin-left: 50px;
 }
 
-@media (min-width: 320px) and (max-width: 374px)
+@media (min-width: 310px) and (max-width: 374px)
 {
+    .logodusite-page-produit {
+        width: 60%;
+        margin-left: 10px;
+    }
+    .logodusite {
+        width: 60%;
+        margin-left: 50px;
+    }
+    .nav-lienpanier {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+        margin-left: 18px;
+    }
+    .nav-lienpanier-page-produit {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+        margin-right: 30px; 
+    }
+    .toutes-les-cartes {
+        display: block;
+        
+    }
     .liste-nounours {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
     }
     .image-nounours {
-        width: 240px;
-        height: 240px;    
+        width: 200px;
+        height: 240px;   
+        margin: 0;
+        padding: 0;
 }
-.image-du-produit {
-    width: 160px;
-    height: 100px;
-    object-fit: cover;
+    button {
+        color: black;
+        border: 2px solid black;
+        margin: 0 auto;
+    }
+    #affichageduProduit {
+        background-color: #F3E9F1;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+     #productQuantity {
+        margin-left: 30px;
+        margin-bottom: 20px;
+    } 
+    #btnAjoutezAuPanier 
+ {
+    border: 2px solid black;
+    padding: 15px;    
+    margin: 0 auto;
+    color: black;
+    text-align: center;
 }
 }
 @media (min-width: 375px) and (max-width: 424px)
 {
+    .logodusite-page-produit {
+        width: 60%;
+        margin-left: 10px;
+    }
+    .nav-lienpanier-page-produit {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+        margin-right: 30px; 
+    }
+    header {
+        height: 120px;
+    }
+    .affichageDansLaPageProduit {
+        display: flex;
+    }
+    .logodusite {
+        width: 60%;
+        margin-left: 60px;
+    }
+    .nav-lienpanier {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+        margin-left: 45px;
+    }
+    .toutes-les-cartes {
+        display: block;
+    }
     .liste-nounours {
         display: flex;
         flex-wrap: nowrap;
@@ -258,19 +351,343 @@ margin: 10px;
     }
     .image-nounours {
         width: 240px;
-        height: 240px;    
+        height: 240px;   
+        margin: 0;
+        padding: 0;
 }
+    button {
+        color: black;
+        border: 2px solid black;
+        margin: 0 auto;
+    }
+    #affichageduProduit {
+        background-color: #F3E9F1;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    #productQuantity {
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+
 }
 
 @media (min-width: 425px) and (max-width: 767px)
 {
-    .liste-nounours {
+    .logodusite-page-produit {
+        width: 60%;
+        margin-left: 20px;
+    }
+    .nav-lienpanier-page-produit {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+        margin-right: 30px; 
+    }
+    header {
+        height: 120px;
+    }
+    .logodusite {
+        width: 60%;
+        margin-left: 70px;
+    }
+    .nav-lienpanier {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+        margin-left: 65px;
+    }
+    .toutes-les-cartes {
+        display: block;
+    }
+    .image-nounours {
+        width: 280px;
+        height: 240px;   
+        margin: 0;
+        padding: 0;
+}
+    button {
+        color: black;
+        border: 2px solid black;
+        margin: 0 auto;
+    }
+    #affichageduProduit {
+        background-color: #F3E9F1;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    #productQuantity {
+        margin-left: -40px;
+        margin-bottom: 20px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px)
+{
+    .logodusite-page-produit {
+        width: 30%;
+    }
+    .nav-lienpanier-page-produit {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    nav {
         display: flex;
-        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .nav-lienpanier {
+        text-decoration: none;
+        color: black;
+        border-radius: 2em;
+        border: 2px solid black;
+        padding: 10px;
+
+    }
+    .toutes-les-cartes {
+        display: flex;
         flex-direction: column;
     }
     .image-nounours {
-        width: 240px;
-        height: 240px;    
+        width: 450px;
+        height: 300px;   
+        margin-left: 80px;
+        padding: 0;
 }
-}
+    button {
+        color: black;
+        border: 2px solid black;
+        margin: 0 auto;
+    }
+    #affichageduProduit {
+        background-color: #F3E9F1;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    #productQuantity {
+        margin-left: -350px;
+        margin-bottom: 20px;
+    }
+    }
+    @media (min-width: 1024px) and (max-width: 1439px)
+    {
+        .logodusite-page-produit {
+            width: 30%;
+        }
+        .nav-lienpanier-page-produit {
+            text-decoration: none;
+            color: black;
+            border-radius: 2em;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .nav-lienpanier {
+            text-decoration: none;
+            color: black;
+            border-radius: 2em;
+            border: 2px solid black;
+            padding: 10px;
+            margin-bottom: 50px;
+    
+        }
+        .toutes-les-cartes {
+            display: flex;
+            flex-direction: column;
+        }
+        .image-nounours {
+            width: 480px;
+            height: 380px;   
+            margin-left: 260px;
+            padding: 0;
+    }
+        button {
+            color: black;
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+        #affichageduProduit {
+            background-color: #F3E9F1;
+            width: 80%;
+            padding: 20px;
+        }
+        #productQuantity {
+            margin-left: -350px;
+            margin-bottom: 20px;
+        }
+        }
+    @media (min-width: 1440px) and (max-width: 2559px)
+    {
+        .logodusite-page-produit {
+            width: 30%;
+        }
+        .nav-lienpanier-page-produit {
+            text-decoration: none;
+            color: black;
+            border-radius: 2em;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            font-size: 130%;
+        }
+        nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .nav-lienpanier {
+            text-decoration: none;
+            color: black;
+            border-radius: 2em;
+            border: 2px solid black;
+            padding: 10px;
+            margin-bottom: 50px;
+    
+        }
+        .toutes-les-cartes {
+            display: flex;
+            flex-direction: column;
+        }
+        .image-nounours {
+            width: 520px;
+            height: 420px;   
+            
+            padding: 0;
+        }
+        
+            button {
+                color: black;
+                border: 2px solid black;
+                margin: 0 auto;
+                padding: 20px;
+                font-size: 130%
+            }
+            #affichageduProduit {
+                background-color: #F3E9F1;
+                width: 80%;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            #productQuantity {
+                margin-left: -850px;
+                margin-bottom: 20px;
+            }
+        }
+    @media (min-width: 2560px) and (max-width: 3000px)
+    {
+        .logodusite-page-produit {
+            width: 30%;
+        }
+        .nav-lienpanier-page-produit {
+            text-decoration: none;
+            color: black;
+            border-radius: 2em;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            font-size: 250%;
+        }
+        nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .nav-lienpanier {
+            text-decoration: none;
+            color: black;
+            border-radius: 2em;
+            border: 2px solid black;
+            padding: 10px;
+            margin-bottom: 50px;
+            font-size: 130%;
+    
+        }
+        .toutes-les-cartes {
+            display: flex;
+            flex-direction: column;
+        }
+        .image-nounours {
+            width: 400px;
+            height: 320px;   
+            margin-left: 40px;
+            padding: 0;
+    }
+    #affichageduProduit {
+        background-color: #F3E9F1;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+        button {
+            color: black;
+            border: 2px solid black;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 250%
+        }
+    }

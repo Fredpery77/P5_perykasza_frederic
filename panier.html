@@ -14,7 +14,7 @@
 
     <!--début du header-->
     <header>
-        <a href="./index.html"><img class="logodusite"
+        <a href="./index.html"><i class="fas fa-arrow-left fa-lg back"></i><img class="logodusite"
                 src="./img/155217189_223764392828019_4999796935568417374_n.png.webp" alt="Orinico"></a>
 
     </header>
@@ -23,14 +23,46 @@
     <!-- Produits dans le panier -->
 
     <section id="commandeencours">
+        
         <h2>Votre panier</h2>
         <div id="affichageduPanier">
 
+        </div>
+        
         </div>
         <div class="container-panier-vide">
 
         </div>
     </section>
+    <div id="formulaireCommande">
+        <h2>Remplissez le formulaire pour valider la commande</h2>
+
+        <form>
+            <label for="prenom"> Prénom :</label>
+            <input type="text" id="prenom" name="prenom" required>
+    
+            <label for="nom"> Nom : </label>
+            <input type="text" id="nom" name="nom" required>
+    
+            <label for="adresse"> Adresse : </label>
+            <textarea id="adresse" name="adresse" required>
+                    </textarea>
+    
+            <label for="ville"> Ville : </label>
+            <input type="text" id="ville" name="ville" required>
+    
+            <label for="codePostal"> Code Postal : </label>
+            <input type="text" id="codePostal" name="codePostal" required>
+    
+            <label for="email"> E-mail : </label>
+            <input type="text" id="email" name="email" required>
+    
+            <button id="envoyerFormulaire" type="submit" name="envoyerFormulaire">
+                Confirmation de la commande
+            </button>
+        </form>
+    </div>
+
     <script src="./js/panier.js"></script>
 </body>
 </html>
