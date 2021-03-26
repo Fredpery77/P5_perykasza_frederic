@@ -21,7 +21,7 @@ if (produitEnregistreDansLocalStorage === null) {
     let structureProduitPanier = [];
     for (i = 0; i < produitEnregistreDansLocalStorage.length; i++) {
 
-        structureProduitPanier +=  `
+        structureProduitPanier += `
 <section id="commandeencours">
     <div id="affichageduPanier">
         <table class="table">
@@ -29,7 +29,7 @@ if (produitEnregistreDansLocalStorage === null) {
                 <tr>
                     <th><span id="nomDansLePanier">Nom : ${produitEnregistreDansLocalStorage[i].name}</span> </th>
                     <th><span id="imageDansLePanier"><img class="image-nounours" src="${produitEnregistreDansLocalStorage[i].imageUrl}"/></span></th>
-                    <th><span id="prixDansLePanier">Prix : ${produitEnregistreDansLocalStorage[i].price/100},00 € </span></th>
+                    <th><span id="prixDansLePanier">Prix : ${produitEnregistreDansLocalStorage[i].price / 100},00 € </span></th>
                 </tr>
             </thead>
         </table>
@@ -38,11 +38,11 @@ if (produitEnregistreDansLocalStorage === null) {
     `
             ;
     }
-   
-        
-        //injection html dans la page panier
-        affichagePanier.innerHTML = structureProduitPanier;
-    }
+
+
+    //injection html dans la page panier
+    affichagePanier.innerHTML = structureProduitPanier;
+}
 
 
 
@@ -67,11 +67,168 @@ const prixTotal = prixTotalCalcul.reduce(reducer, 0);
 
 // Le code HTML du prix total à afficher
 const affichagePrixHtml = `
-<div class="affichage-prix-total-html">Le prix total est de : ${prixTotal/100},00 € </div>
+<div class="affichage-prix-total-html">Le prix total est de : ${prixTotal / 100},00 € </div>
 `
 
 //injection html dans la page panier après le dernier enfant
 affichagePanier.insertAdjacentHTML("beforeend", affichagePrixHtml);
 
 //-----------------------------------------------FIN - Le montant total du panier-------------------------------
+
+//*********************************************************Le formulaire de commande**************************/
+
+const afficherFormulaireHtml = () => {
+    //Sélection élément du DOM pour le positionnement du formulaire
+    const positionFormulaire = document.querySelector("#commandeencours");
+
+    const structureFormulaire = `
+    <div id="formulaireCommande">
+        <h2>Remplissez le formulaire pour valider la commande</h2>
+    
+    
+        <form>
+            <label for="firstName"> Prénom :</label>
+            <input type="text" id="firstName" name="firstName" required>
+    
+            <label for="lastName"> Nom : </label>
+            <input type="text" id="lastName" name="lastName" required>
+    
+            <label for="address"> Adresse : </label>
+            <textarea id="address" name="address" required>
+            </textarea>
+    
+            <label for="city"> Ville : </label>
+            <input type="text" id="city" name="city" required>
+    
+            <label for="codePostal"> Code Postal : </label>
+            <input type="text" id="codePostal" name="codePostal" required>
+    
+            <label for="email"> E-mail : </label>
+            <input type="text" id="email" name="email" required>
+    
+            <button id="envoyerFormulaire" type="submit" name="envoyerFormulaire">
+                Confirmation de la commande
+            </button>
+        </form>
+    </div>`;
+
+    //injection HTML
+    positionFormulaire.insertAdjacentHTML("afterend", structureFormulaire);
+};
+
+//Affichage du formulaire
+afficherFormulaireHtml();
+
+//Sélection du bouton envoyer le formulaire
+const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
+
+
+//addEnventlistnener
+btnEnvoyerFormulaire.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    //Récupération des valeurs du formulaire
+    const formulaireValues = {
+        firstName: document.querySelector("#firstName").value,
+        lastName: document.querySelector("#lastName").value,
+        address: document.querySelector("#address").value,
+        city: document.querySelector("#city").value,
+        codePostal: document.querySelector("#codePostal").value,
+        email: document.querySelector("#email").value
+    }
+
+    //**************************************GESTION VALIDATION DU FORMULAIRE************************/
+    const textAlert = (value) => {
+        return `${value} : Chiffre et symbole ne sont pas autorisé \n Ne pas dépasser 20 caractères, minimum 3 caratères`;
+    };
+
+    const regExPrenomNomVille = (value) => {
+        return /^[A-Za-z]{3,20}$/.test(value);
+
+    };
+    const regExCodePostal = (value) => {
+        return /^[0-9]{5}$/.test(value);
+    };
+    const regExEmail = (value) => {
+        return /^[\w-\.]+@([\w-]+\.)[\w-]{2,4}$/.test(value);
+    };
+    const regExAdresse = (value) => {
+        return /^[A-Za-z0-9\s]{5,50}$/.test(value);
+    };
+
+    function prenomControle() {
+        //Contrôle de la validité du prenom
+        const lePrenom = formulaireValues.firstName;
+        if (regExPrenomNomVille(lePrenom)) {
+            return true;
+        } else {
+            alert(textAlert("Prénom"));
+            return false;
+        }
+    };
+
+    function nomControle() {
+        //Contrôle de la validité du nom
+        const leNom = formulaireValues.lastName;
+        if (regExPrenomNomVille(leNom)) {
+            return true;
+        } else {
+            alert(textAlert("Nom"));
+            return false;
+        }
+    };
+    function codePostalControle() {
+        //Contrôle de la validité du code postal
+        const leCodePostal = formulaireValues.codePostal;
+        if (regExCodePostal(leCodePostal)) {
+            return true;
+        } else {
+            alert("Code Postal : doit être composé de 5 chiffres");
+            return false;
+        }
+    };
+    function emailControle() {
+        //Contrôle de la validité de l'email
+        const leEmail = formulaireValues.email;
+        if (regExEmail(leEmail)) {
+            return true;
+        } else {
+            alert("L'email n'est pas valide");
+            return false;
+        }
+    };
+    function adresseControle() {
+        //Contrôle de la validité de l'addresse
+        const leAdresse = formulaireValues.address;
+        if (regExAdresse(leAdresse)) {
+            return true;
+        } else {
+            alert("L'adresse doit contenir que des lettres sans ponctuation et des chiffres");
+            return false;
+        }
+    };
+
+    //Contrôle la validité fdu formulaire avant envoie dans le local storage
+    if (prenomControle() && nomControle() && codePostalControle() &&emailControle() && adresseControle() ) {
+        //Mettre l'objet "formulaireValues" dans le local storage
+        localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
+
+    } else {
+        alert("Veuillez bien remplir le formulaire");
+
+    }
+
+    //---------------------FIN----GESTION VALIDATION DU FORMULAIRE------------------------------------------------
+
+    //Mettre les valeurs du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
+    const aEnvoyer = {
+        produitEnregistreDansLocalStorage,
+        formulaireValues
+    }
+    console.log(aEnvoyer);
+
+    //Envoie de l'objet "aEnvoyer" vers le serveur
+})
+
+
 
