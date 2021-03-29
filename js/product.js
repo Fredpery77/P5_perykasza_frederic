@@ -52,6 +52,7 @@ dataApi.then(async (responseData) => {
       imageUrl: response.imageUrl,
       name: response.name,
       price: response.price,
+      id: response._id
     }
 
     //--------------------------------Le Local Storage---------------------------------------
@@ -59,7 +60,7 @@ dataApi.then(async (responseData) => {
 
 
     //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et le values qui sont dans le local storage
-    let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
+    let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("products"));
 
     //---------JSON.parse c'est pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 
@@ -81,7 +82,7 @@ dataApi.then(async (responseData) => {
       produitEnregistreDansLocalStorage.push(produitDansLePanier);
 
       //la transformation en format JSON et l'envoyer dans la key "produit" du localStorage
-      localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage));
+      localStorage.setItem("products", JSON.stringify(produitEnregistreDansLocalStorage));
     };
 
     // SI il a déjà des produits d'enregistrés dans le local storage

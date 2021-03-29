@@ -5,6 +5,10 @@ body {
     font-family: "Roboto", Arial, sans-serif;
     background-color:#383737;
 }
+p {
+    color: white;
+    text-align: center;
+}
 .fa-arrow-left {
     color: black;
     padding-right: 20px;
@@ -151,7 +155,14 @@ button:hover {
     margin: 0 auto;
     padding: 40px;
 }
-
+#confirmationCommande {
+    display: flex;
+    flex-direction: column;
+}
+.btn_commande{
+    color: black;
+    
+}
 
           /* ------------affichage page produit------------- */
 li {
@@ -190,7 +201,6 @@ li {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    text-align: end;
 }
 /*--------------------------- Formulaire commande -------------------------------*/
 

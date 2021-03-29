@@ -1,6 +1,6 @@
 
 //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et le values qui sont dans le local storage
-let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"));
+let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("products"));
 
 //-----------------------Affichage des produits du panier------------------------------------
 // sélection de la classe pour injecter le HTML----------------------------------
@@ -128,7 +128,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     e.preventDefault();
 
     //Récupération des valeurs du formulaire
-    const formulaireValues = {
+    const contact = {
         firstName: document.querySelector("#firstName").value,
         lastName: document.querySelector("#lastName").value,
         address: document.querySelector("#address").value,
@@ -158,7 +158,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 
     function prenomControle() {
         //Contrôle de la validité du prenom
-        const lePrenom = formulaireValues.firstName;
+        const lePrenom = contact.firstName;
         if (regExPrenomNomVille(lePrenom)) {
             return true;
         } else {
@@ -169,7 +169,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 
     function nomControle() {
         //Contrôle de la validité du nom
-        const leNom = formulaireValues.lastName;
+        const leNom = contact.lastName;
         if (regExPrenomNomVille(leNom)) {
             return true;
         } else {
@@ -179,7 +179,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     };
     function codePostalControle() {
         //Contrôle de la validité du code postal
-        const leCodePostal = formulaireValues.codePostal;
+        const leCodePostal = contact.codePostal;
         if (regExCodePostal(leCodePostal)) {
             return true;
         } else {
@@ -189,7 +189,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     };
     function emailControle() {
         //Contrôle de la validité de l'email
-        const leEmail = formulaireValues.email;
+        const leEmail = contact.email;
         if (regExEmail(leEmail)) {
             return true;
         } else {
@@ -199,7 +199,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     };
     function adresseControle() {
         //Contrôle de la validité de l'addresse
-        const leAdresse = formulaireValues.address;
+        const leAdresse = contact.address;
         if (regExAdresse(leAdresse)) {
             return true;
         } else {
@@ -210,8 +210,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 
     //Contrôle la validité fdu formulaire avant envoie dans le local storage
     if (prenomControle() && nomControle() && codePostalControle() &&emailControle() && adresseControle() ) {
-        //Mettre l'objet "formulaireValues" dans le local storage
-        localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
+        //Mettre l'objet "contact" dans le local storage
+        localStorage.setItem("contact", JSON.stringify(contact));
 
     } else {
         alert("Veuillez bien remplir le formulaire");
@@ -223,12 +223,34 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     //Mettre les valeurs du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
     const aEnvoyer = {
         produitEnregistreDansLocalStorage,
-        formulaireValues
+        contact
     }
     console.log(aEnvoyer);
 
-    //Envoie de l'objet "aEnvoyer" vers le serveur
+
+    const products = [];
+
+    produitEnregistreDansLocalStorage.forEach(element => {
+        products.push(element.id)
+    });
+    
+    
+    fetch('http://localhost:3000/api/teddies/order', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({contact, products})      
+    }).then(res => res.json())
+    .then(res => window.location.href = "commande.html?orderId="+res.orderId);
+
 })
 
 
 
+    
+
+
+    
+    
