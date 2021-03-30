@@ -7,7 +7,6 @@ let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("product
 const affichagePanier = document.querySelector("#commandeencours");
 
 
-
 //----------------Si le panier est vide : afficher le panier est vide
 if (produitEnregistreDansLocalStorage === null) {
     const panierVide = `
@@ -22,7 +21,8 @@ if (produitEnregistreDansLocalStorage === null) {
     for (i = 0; i < produitEnregistreDansLocalStorage.length; i++) {
 
         structureProduitPanier += `
-<section id="commandeencours">
+   
+    <section id="commandeencours">
     <div id="affichageduPanier">
         <table class="table">
             <thead>
@@ -35,15 +35,12 @@ if (produitEnregistreDansLocalStorage === null) {
         </table>
     </div>
 </section>
-    `
-            ;
+    `;
     }
-
 
     //injection html dans la page panier
     affichagePanier.innerHTML = structureProduitPanier;
 }
-
 
 
 //-----------------------------Fin de l'affichage des produits dans le panier----------------
@@ -208,8 +205,8 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
         }
     };
 
-    //Contrôle la validité fdu formulaire avant envoie dans le local storage
-    if (prenomControle() && nomControle() && codePostalControle() &&emailControle() && adresseControle() ) {
+    //Contrôle la validité du formulaire avant envoie dans le local storage
+    if (prenomControle() && nomControle() && codePostalControle() && emailControle() && adresseControle()) {
         //Mettre l'objet "contact" dans le local storage
         localStorage.setItem("contact", JSON.stringify(contact));
 
@@ -233,24 +230,23 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     produitEnregistreDansLocalStorage.forEach(element => {
         products.push(element.id)
     });
-    
-    
+
+
     fetch('http://localhost:3000/api/teddies/order', {
         method: 'post',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({contact, products})      
+        body: JSON.stringify({ contact, products })
     }).then(res => res.json())
-    .then(res => window.location.href = "commande.html?orderId="+res.orderId);
+        .then(res => window.location.href = "commande.html?orderId=" + res.orderId);
 
 })
 
 
 
-    
 
 
-    
-    
+
+

@@ -9,20 +9,15 @@ p {
     color: white;
     text-align: center;
 }
-.fa-arrow-left {
-    color: black;
-    padding-right: 20px;
-    width: 10%;
-}
 h2 {
     padding: 10px;
+    background-color: #F3E9F1;
 }
 header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    height: 100px;
     padding: 30px;
     background-color: #F3E9F1;
     margin: 15px;
@@ -237,7 +232,7 @@ textarea {
 {
     .logodusite-page-produit {
         width: 60%;
-        margin-left: 10px;
+        margin-left: 50px;
     }
     .logodusite {
         width: 60%;
@@ -423,33 +418,42 @@ textarea {
 }
 @media (min-width: 768px) and (max-width: 1023px)
 {
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        background-color: #F3E9F1;
+        margin: 15px;
+    }
+    .logodusite {
+        width: 40%;
+        margin-left: 200px;
+        margin-bottom: 20px;
+    }
     .logodusite-page-produit {
-        width: 30%;
+        width: 40%;
+        margin-left: 120px;
+        margin-bottom: 20px;
     }
     .nav-lienpanier-page-produit {
         text-decoration: none;
         color: black;
         border-radius: 2em;
         border: 2px solid black;
-        padding: 10px;
-    }
+        padding: 10px;       
+    } 
     ul {
         margin: 0;
         padding: 0;
     }
-    nav {
+     nav {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
-    }
-    
-    header {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
     }
     .nav-lienpanier {
         text-decoration: none;
@@ -505,14 +509,6 @@ textarea {
             display: flex;
             flex-direction: row;
             align-items: center;
-        }
-        
-        header {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
         }
         .nav-lienpanier {
             text-decoration: none;

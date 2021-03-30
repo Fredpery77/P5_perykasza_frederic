@@ -5,18 +5,18 @@ const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id')
 
 const dataApi = fetch('http://localhost:3000/api/teddies/' + id);
-
+console.log(dataApi);
 dataApi.then(async (responseData) => {
 
   const response = await responseData.json();
   const section = document.querySelector('.image-du-produit');
-
+  
   let name = response.name;
   let description = response.description;
   let imageUrl = response.imageUrl;
   let price = response.price;
   let colors = response.colors;
-  var html = '';
+  let html = '';
 
   //------------------------injecter la structure HTML pour affichage du produit------------
 
@@ -29,6 +29,7 @@ dataApi.then(async (responseData) => {
     + `<form><select id="productQuantity" name="quantity" id="quantity">`;
 
   colors.forEach(function (color) {
+    
     html += `<option value="` + color + `">` + color + `</option>`;
   });
 
@@ -61,7 +62,7 @@ dataApi.then(async (responseData) => {
 
     //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et le values qui sont dans le local storage
     let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("products"));
-
+    
     //---------JSON.parse c'est pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 
     //----------------Foncion fenêtre pop up--------------
@@ -74,7 +75,7 @@ dataApi.then(async (responseData) => {
         window.location.href = "index.html";
       }
     }
-
+    
     //Fonction ajouter un produit sélectionné dans le localStorage
     const ajoutProduitLocalStorage = () => {
 

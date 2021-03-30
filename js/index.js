@@ -5,15 +5,16 @@ dataApi.then(async (responseData) => {
 
   const response = await responseData.json();
   const section = document.querySelector('.toutes-les-cartes');
-  
-  
-  response.forEach((element, i) => {
+ 
+  // La boucle pour afficher tous les produits dans la page web
+  response.forEach((element,) => {
     name = element.name;
     imageUrl = element.imageUrl;
     description = element.description;
     price = element.price;
     colors= element.colors;
     id = element._id;
+    //Afficher tous les produits sur la page web
      
     section.innerHTML += '<section class="carteNounours"><ul>'
     + '<li><span id="productImage"><img class="image-nounours" src="' + element.imageUrl + '"/> </span></li>'
