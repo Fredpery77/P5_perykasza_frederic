@@ -5,12 +5,11 @@ const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id')
 
 const dataApi = fetch('http://localhost:3000/api/teddies/' + id);
-console.log(dataApi);
 dataApi.then(async (responseData) => {
 
   const response = await responseData.json();
   const section = document.querySelector('.image-du-produit');
-  
+
   let name = response.name;
   let description = response.description;
   let imageUrl = response.imageUrl;
@@ -29,22 +28,16 @@ dataApi.then(async (responseData) => {
     + `<form><select id="productQuantity" name="quantity" id="quantity">`;
 
   colors.forEach(function (color) {
-    
+
     html += `<option value="` + color + `">` + color + `</option>`;
   });
 
-
-
-
-  html += `</select></form><a class="ajoutezAuPanier"><button id="btnAjoutezAuPanier">Ajoutez au panier</button></a>`
+  html += `</select></form><a class="ajouterAuPanier"><button id="btnAjouterAuPanier">Ajouter au panier</button></a>`
     + '</ul></section>';
 
   section.innerHTML = html;
 
-
-  const envoyerPanier = document.querySelector("#btnAjoutezAuPanier");
-
-
+  const envoyerPanier = document.querySelector("#btnAjouterAuPanier");
 
   envoyerPanier.addEventListener("click", (event) => {
     event.preventDefault();
@@ -62,10 +55,10 @@ dataApi.then(async (responseData) => {
 
     //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle on met les key et le values qui sont dans le local storage
     let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("products"));
-    
+
     //---------JSON.parse c'est pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 
-    //----------------Foncion fenêtre pop up--------------
+    //----------------Fonction fenêtre pop up--------------
     const popupConfirmation = () => {
       if (window.confirm(`${response.name} a bien été ajouté au panier
   Consultez le panier OK ou continuez vos achats ANNULER`)) {
@@ -75,7 +68,7 @@ dataApi.then(async (responseData) => {
         window.location.href = "index.html";
       }
     }
-    
+
     //Fonction ajouter un produit sélectionné dans le localStorage
     const ajoutProduitLocalStorage = () => {
 
@@ -86,20 +79,18 @@ dataApi.then(async (responseData) => {
       localStorage.setItem("products", JSON.stringify(produitEnregistreDansLocalStorage));
     };
 
-    // SI il a déjà des produits d'enregistrés dans le local storage
+    // S'il a déjà des produits d'enregistrés dans le local storage
     if (produitEnregistreDansLocalStorage) {
       ajoutProduitLocalStorage();
       popupConfirmation();
 
-      // SI il n'y a pas de produits enregistrés dans le local storage
+      // S'il n'y a pas de produits enregistrés dans le local storage
     }
     else {
       produitEnregistreDansLocalStorage = [];
       ajoutProduitLocalStorage();
       popupConfirmation();
-
     }
-
   })
 });
 

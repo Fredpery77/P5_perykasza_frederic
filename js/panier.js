@@ -15,8 +15,9 @@ if (produitEnregistreDansLocalStorage === null) {
 </div>`;
     affichagePanier.innerHTML = panierVide;
 
+
 } else {
-    // si le panier n'est pas vide : afficher le produit
+    // si le panier n'est pas vide : afficher les produits dans le localStorage
     let structureProduitPanier = [];
     for (i = 0; i < produitEnregistreDansLocalStorage.length; i++) {
 
@@ -45,7 +46,7 @@ if (produitEnregistreDansLocalStorage === null) {
 
 //-----------------------------Fin de l'affichage des produits dans le panier----------------
 
-//-------------------------------------Le montant total dans le panier------------------
+//-------------------------------------Le montant total du panier------------------
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier---------
 let prixTotalCalcul = [];
 
@@ -55,7 +56,6 @@ for (let j = 0; j < produitEnregistreDansLocalStorage.length; j++) {
 
     //Mettre les prix du panier dans la variable "prixTotalCalcul"
     prixTotalCalcul.push(prixProduitsDansLePanier)
-
 }
 
 //Additionner les prix qu'il y a dans le tableau de la variable "prixTotalCalcul" avec la méthode reduce
@@ -140,17 +140,17 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     };
 
     const regExPrenomNomVille = (value) => {
-        return /^[A-Za-z]{3,20}$/.test(value);
+        return /^[A-Za-z-\s]{3,20}$/.test(value);
 
     };
     const regExCodePostal = (value) => {
         return /^[0-9]{5}$/.test(value);
     };
     const regExEmail = (value) => {
-        return /^[\w-\.]+@([\w-]+\.)[\w-]{2,4}$/.test(value);
+        return /^[\w-\.]+@([\w-]+\.)[a-z]{2,4}$/.test(value);
     };
     const regExAdresse = (value) => {
-        return /^[A-Za-z0-9\s]{5,50}$/.test(value);
+        return /^[A-Za-z0-9-\s]{5,50}$/.test(value);
     };
 
     function prenomControle() {
@@ -218,14 +218,9 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     //---------------------FIN----GESTION VALIDATION DU FORMULAIRE------------------------------------------------
 
     //Mettre les valeurs du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
-    const aEnvoyer = {
-        produitEnregistreDansLocalStorage,
-        contact
-    }
-    console.log(aEnvoyer);
+    
 
-
-    const products = [];
+    let products = [];
 
     produitEnregistreDansLocalStorage.forEach(element => {
         products.push(element.id)

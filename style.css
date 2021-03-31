@@ -170,7 +170,7 @@ li {
     margin: 0 auto;
     padding: 20px;
 }
-#btnAjoutezAuPanier 
+#btnAjouterAuPanier 
  {
     border: 2px solid black;
     padding: 15px;    
@@ -178,7 +178,7 @@ li {
     color: black;
     text-align: center;
 }
-#btnAjoutezAuPanier:hover {
+#btnAjouterAuPanier:hover {
     background-color: #dee;
     transform: scale(1.08);
 }
@@ -284,7 +284,7 @@ textarea {
         margin-left: 30px;
         margin-bottom: 20px;
     } 
-    #btnAjoutezAuPanier 
+    #btnAjouterAuPanier 
  {
     border: 2px solid black;
     padding: 15px;    

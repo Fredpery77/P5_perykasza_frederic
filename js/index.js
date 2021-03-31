@@ -14,8 +14,9 @@ dataApi.then(async (responseData) => {
     price = element.price;
     colors= element.colors;
     id = element._id;
-    //Afficher tous les produits sur la page web
-     
+
+
+    //Afficher tous les produits sur la page web 
     section.innerHTML += '<section class="carteNounours"><ul>'
     + '<li><span id="productImage"><img class="image-nounours" src="' + element.imageUrl + '"/> </span></li>'
     + '<li>Nom du produit : <span id="productName">' + element.name + '</span></li>'
@@ -25,6 +26,5 @@ dataApi.then(async (responseData) => {
     + '</ul></section>';                               
   });
 });
-
 
 
