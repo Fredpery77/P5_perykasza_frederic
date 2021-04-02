@@ -138,7 +138,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     const textAlert = (value) => {
         return `${value} : Chiffre et symbole ne sont pas autorisé \n Ne pas dépasser 20 caractères, minimum 3 caratères`;
     };
-
+console.log(textAlert);
     const regExPrenomNomVille = (value) => {
         return /^[A-Za-z-\s]{3,20}$/.test(value);
 
@@ -225,7 +225,7 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
     produitEnregistreDansLocalStorage.forEach(element => {
         products.push(element.id)
     });
-
+    console.log(products);
 
     fetch('http://localhost:3000/api/teddies/order', {
         method: 'post',
