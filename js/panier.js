@@ -124,7 +124,6 @@ const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
 btnEnvoyerFormulaire.addEventListener("click", (e) => {
     e.preventDefault();
     
-
     //Récupération des valeurs du formulaire
     const contact = {
         firstName: document.querySelector("#firstName").value,
@@ -153,7 +152,7 @@ console.log(textAlert);
         return /^[A-Za-z0-9-\s]{5,50}$/.test(value);
     };
     const regExVille = (value) => {
-        return /^[A-Za-z0-9-\s]{5,50}$/.test(value);
+        return /^[A-Za-z-\s]{5,50}$/.test(value);
     };
 
     function prenomControle() {
