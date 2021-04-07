@@ -83,7 +83,6 @@ dataApi.then(async (responseData) => {
     if (produitEnregistreDansLocalStorage) {
       ajoutProduitLocalStorage();
       popupConfirmation();
-
       // S'il n'y a pas de produits enregistrés dans le local storage
     }
     else {

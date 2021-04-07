@@ -107,14 +107,14 @@ const afficherFormulaireHtml = () => {
                 Confirmation de la commande
             </button>
         </form>
-    </div>`;
+    </div>`; 
 
-    //injection HTML
+   //injection HTML
     positionFormulaire.insertAdjacentHTML("afterend", structureFormulaire);
 };
 
 //Affichage du formulaire
-afficherFormulaireHtml();
+afficherFormulaireHtml(); 
 
 //Sélection du bouton envoyer le formulaire
 const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
@@ -123,6 +123,7 @@ const btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
 //addEnventlistnener
 btnEnvoyerFormulaire.addEventListener("click", (e) => {
     e.preventDefault();
+    
 
     //Récupération des valeurs du formulaire
     const contact = {
@@ -141,7 +142,6 @@ btnEnvoyerFormulaire.addEventListener("click", (e) => {
 console.log(textAlert);
     const regExPrenomNomVille = (value) => {
         return /^[A-Za-z-\s]{3,20}$/.test(value);
-
     };
     const regExCodePostal = (value) => {
         return /^[0-9]{5}$/.test(value);
@@ -150,6 +150,9 @@ console.log(textAlert);
         return /^[\w-\.]+@([\w-]+\.)[a-z]{2,4}$/.test(value);
     };
     const regExAdresse = (value) => {
+        return /^[A-Za-z0-9-\s]{5,50}$/.test(value);
+    };
+    const regExVille = (value) => {
         return /^[A-Za-z0-9-\s]{5,50}$/.test(value);
     };
 
@@ -204,40 +207,48 @@ console.log(textAlert);
             return false;
         }
     };
+        function cityControle() {
+            //Contrôle de la validité de la ville
+            const laVille = contact.city;
+            if (regExVille(laVille)) {
+                return true;
+            } else {
+                alert("La ville doit contenir que des lettres sans ponctuation et des chiffres");
+                return false;
+            }
+        };
 
     //Contrôle la validité du formulaire avant envoie dans le local storage
-    if (prenomControle() && nomControle() && codePostalControle() && emailControle() && adresseControle()) {
+    if (prenomControle() && nomControle() && codePostalControle() && emailControle() && adresseControle() && cityControle() ) {
         //Mettre l'objet "contact" dans le local storage
         localStorage.setItem("contact", JSON.stringify(contact));
+        let products = [];
 
+        produitEnregistreDansLocalStorage.forEach(element => {
+            products.push(element.id)
+        });
+        
+        fetch('http://localhost:3000/api/teddies/order', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ contact, products })
+        }).then(res => res.json())
+            .then(res => window.location.href = "commande.html?orderId=" + res.orderId);
+        
     } else {
         alert("Veuillez bien remplir le formulaire");
-
-    }
+        
+    };
 
     //---------------------FIN----GESTION VALIDATION DU FORMULAIRE------------------------------------------------
 
     //Mettre les valeurs du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
-    
-
-    let products = [];
-
-    produitEnregistreDansLocalStorage.forEach(element => {
-        products.push(element.id)
-    });
-    console.log(products);
-
-    fetch('http://localhost:3000/api/teddies/order', {
-        method: 'post',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ contact, products })
-    }).then(res => res.json())
-        .then(res => window.location.href = "commande.html?orderId=" + res.orderId);
-
 })
+
+
 
 
 
